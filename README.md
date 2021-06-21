@@ -161,4 +161,59 @@ abstract class Geom {
 ````
 
 
+#### 第三天
+##### 枚举类型
+````
+enum Status {
+    one,
+    two,
+    three,
+}
+````
+##### 函数泛型 generic
+````
+function join<ABC>(first:ABC,second:ABC){
+    return (`${first}$${second}`);
+}
+join<string>("1","2");
 
+// 类中的泛型
+
+interface Item {
+    name:string;
+}
+
+class DataManager<T extends Item> {
+    constructor(private data:T[]){}
+        getItem(index:number):string{
+            return this.data[index].name;
+        }
+}
+const data = new DataManager([{name:"dell"}]);
+data.getItem(0);
+
+// 如何使用泛型作为一个具体的类型注解
+const func:<T>() => string =<T>()=>{
+    return '123';
+}
+
+````
+##### namespace 命名空间
+
+````
+namespace Home {
+   export class Header {   // 导出class
+        constructor(){
+            console.log(6);
+        }
+    }
+}
+````
+
+##### 描述文件中的全局类型
+````
+// 定义全局变量
+declare var $:(param:()=>void) => void;
+// 定义函数
+declare function $(params:()=>void):void
+````
